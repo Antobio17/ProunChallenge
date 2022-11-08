@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Repository\Interfaces\UserRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,15 +19,26 @@ use function get_class;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface, PasswordUpgraderInterface
 {
+
+    /************************************************* CONSTRUCT **************************************************/
+
+    /**
+     * UserRepository construct.
+     *
+     * @param ManagerRegistry $registry Manager registry to manage the doctrine.
+     *
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
 
+    /*********************************************** PUBLIC METHODS ***********************************************/
+
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * @inheritDoc
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
@@ -42,10 +54,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
-     * Finds a User searching by the email passed.
-     *
-     * @param string $username Username for search.
-     *
+     * @inheritDoc
      * @return User|null User|null
      */
     public function findByUsername(string $username): ?UserInterface
