@@ -46,9 +46,9 @@ class User extends AbstractORM implements UserInterface, PasswordAuthenticatedUs
     /**
      * User Construct.
      *
-     * @param string $username
-     * @param string $password The password of the new user.
-     * @param array $roles The roles of the new user.
+     * @param string $username The username of the user.
+     * @param string $password The password of the user.
+     * @param array $roles The roles of the user.
      */
     public function __construct(string $username, string $password, array $roles = array())
     {
