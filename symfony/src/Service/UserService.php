@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\User;
+use App\Repository\Interfaces\UserRepositoryInterface;
 use App\Repository\UserRepository;
 use App\Service\Interfaces\UserServiceInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -123,9 +124,9 @@ class UserService extends AppService implements UserServiceInterface
 
     /**
      * @inheritDoc
-     * @return UserRepository UserRepository
+     * @return UserRepositoryInterface UserRepositoryInterface
      */
-    public function getUserRepository(): UserRepository
+    public function getUserRepository(): UserRepositoryInterface
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->getEntityManager()->getRepository(User::class);

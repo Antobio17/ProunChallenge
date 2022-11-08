@@ -3,8 +3,7 @@
 namespace App\Service\Interfaces;
 
 
-use App\Repository\UserRepository;
-use App\Service\UserService;
+use App\Repository\Interfaces\UserRepositoryInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler;
 use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -65,9 +64,9 @@ interface UserServiceInterface extends AppServiceInterface
     /**
      * Facade that returns an instance of the UserRepository.
      *
-     * @return UserRepository UserRepository
+     * @return UserRepositoryInterface UserRepositoryInterface
      */
-    public function getUserRepository(): UserRepository;
+    public function getUserRepository(): UserRepositoryInterface;
 
     /*********************************************** PUBLIC METHODS ***********************************************/
 
