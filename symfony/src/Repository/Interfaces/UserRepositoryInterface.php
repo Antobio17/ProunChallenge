@@ -4,9 +4,10 @@ namespace App\Repository\Interfaces;
 
 use App\Entity\User;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-interface UserRepositoryInterface
+interface UserRepositoryInterface extends PasswordUpgraderInterface
 {
 
     /*********************************************** PUBLIC METHODS ***********************************************/
