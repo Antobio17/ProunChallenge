@@ -54,3 +54,17 @@ http://localhost:30300/
 
 #### Ejemplo de recuperación de Trip:
 ![Ejemplo de recuperación de Trip](images/img_4.png)
+
+### Archivo dotenv
+
+Se necesitará en el entorno local el siguiente archivo .env para el correcto funcionamiento:
+
+```dotenv
+APP_ENV=dev
+APP_SECRET=81d7a4565046eb1fe263f2dc387b2867
+DATABASE_URL="mysql://root:secret@mysql-service:3306/db"
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+JWT_PASSPHRASE=0f3eabfcff25d34ca32ce37d4ca93195
+KERNEL_PROJECT_DIR=%kernel.project_dir%
+```
