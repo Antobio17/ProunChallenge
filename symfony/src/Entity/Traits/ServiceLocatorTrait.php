@@ -18,7 +18,7 @@ trait ServiceLocatorTrait
     /************************************************* PROPERTIES *************************************************/
 
     /**
-     * @ORM\Column(type="string", length=1024)
+     * @ORM\Column(type="string", length=512)
      */
     protected string $serviceLocator;
 

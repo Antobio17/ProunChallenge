@@ -70,11 +70,15 @@ trait VehicleTrait
         );
     }
 
+    /********************************************** PROTECTED METHODS *********************************************/
+
+    /*********************************************** STATIC METHODS ***********************************************/
+
     /**
      * @inheritDoc
      * @return bool bool
      */
-    public function allowVehicle(string $vehicle): bool
+    public static function allowVehicle(string $vehicle): bool
     {
         return in_array($vehicle, array(
             Trip::VEHICLE_CAR,
@@ -82,9 +86,5 @@ trait VehicleTrait
             Trip::VEHICLE_POOLING,
         ));
     }
-
-    /********************************************** PROTECTED METHODS *********************************************/
-
-    /*********************************************** STATIC METHODS ***********************************************/
 
 }

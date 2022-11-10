@@ -26,10 +26,11 @@ interface AppControllerInterface
      *      )
      *
      * @param array $requestFields The array of fields to validate.
+     * @param string $additionalMessage Additional message to the response.
      *
      * @return array array
      */
-    public function validateRequestNumericFields(array $requestFields): array;
+    public function validateRequestNumericFields(array $requestFields, string $additionalMessage = ''): array;
 
     /**
      * Validates the fields of the request passed by parameters as an array of key => value.
@@ -42,45 +43,11 @@ interface AppControllerInterface
      *      )
      *
      * @param array $requestFields The array of fields to validate.
+     * @param string $additionalMessage Additional message to the response.
      *
      * @return array array
      */
-    public function validateRequiredRequestFields(array $requestFields): array;
-
-    /**
-     * Validates the fields of the request passed by parameters as an array of key => value.
-     *
-     *      return array(
-     *          array(
-     *              'field' => 'status',
-     *              'message' => sprintf('The status %s does not exist', $value)
-     *          )
-     *      )
-     *
-     * @param mixed $status The status from the request.
-     * @param array $statusChoices The valid status of the entity.
-     *
-     * @return array array
-     */
-    public function validateRequestStatusField(array $status, array $statusChoices): array;
-
-    /**
-     * Validates the fields of the request passed by parameters as an array of key => value.
-     *
-     *      return array(
-     *          array(
-     *              'field' => $key,
-     *              'message' => sprintf(
-     *                  'El campo %s debe de ser de tipo entero (timestamp) o nulo',$fieldName
-     *              )
-     *          )
-     *      )
-     *
-     * @param array $dates The valid status of the entity.
-     *
-     * @return array array
-     */
-    public function validateRequestDateFields(array $dates): array;
+    public function validateRequiredRequestFields(array $requestFields, string $additionalMessage = ''): array;
 
     /**
      * Gets the param value from the request passed or null if it not exists.
@@ -103,17 +70,6 @@ interface AppControllerInterface
      * @return JsonResponse JsonResponse
      */
     public function createJsonResponse_Creation(mixed $data, array $validationErrors): JsonResponse;
-
-    /**
-     * Creates a Json response for the WebService.
-     * If the process is successful it will return the creation code 202.
-     *
-     * @param mixed $data The data of the response.
-     * @param array $validationErrors The validation errors to add to the response.
-     *
-     * @return JsonResponse JsonResponse
-     */
-    public function createJsonResponse_Put(mixed $data, array $validationErrors): JsonResponse;
 
     /**
      * Creates a Json response for the WebService.

@@ -17,7 +17,7 @@ trait UUIDTrait
     /************************************************* PROPERTIES *************************************************/
 
     /**
-     * @ORM\Column(type="string", length=1024, unique=true, nullable=false)
+     * @ORM\Column(type="string", length=512, unique=true, nullable=false)
      */
     protected string $uuid;
 
