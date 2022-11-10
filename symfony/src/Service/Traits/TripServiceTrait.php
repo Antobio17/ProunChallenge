@@ -1,71 +1,50 @@
 <?php
 
-namespace App\Entity\Traits;
+namespace App\Service\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Traits\Interfaces\HasNameInterface;
+use App\Service\Interfaces\TripServiceInterface;
+use App\Service\Traits\Interfaces\HasTripServiceInterface;
 
 /**
- * Trait to implement Name property.
+ * Trait to implement Trip property.
  *
- * @see HasNameInterface
+ * @see HasTripServiceInterface
  */
-trait NameTrait
+trait TripServiceTrait
 {
 
     /************************************************* PROPERTIES *************************************************/
 
     /**
-     * @ORM\Column(type="string", length=512)
+     * @var TripServiceInterface
      */
-    protected string $name;
+    protected TripServiceInterface $tripService;
 
     /******************************************** GETTERS AND SETTERS *********************************************/
 
     /**
      * @inheritDoc
-     * @return string string
+     * @return TripServiceInterface TripServiceInterface
      */
-    public function getName(): string
+    public function getTripService(): TripServiceInterface
     {
-        return $this->name;
+        return $this->tripService;
     }
 
     /**
      * @inheritDoc
      * @return $this $this
      */
-    public function setName(string $name): self
+    public function setTripService(TripServiceInterface $tripService): self
     {
-        $this->name = $name;
+        $this->tripService = $tripService;
 
         return $this;
     }
 
     /************************************************* CONSTRUCT **************************************************/
 
-    /**
-     *  NameTrait constructor.
-     *
-     * @param string $name Name of the Entity to set.
-     */
-    public function __construct(string $name)
-    {
-        $this->setName($name);
-    }
-
     /*********************************************** PUBLIC METHODS ***********************************************/
-
-    /**
-     * @inheritDoc
-     * @return array array
-     */
-    public function __toArray(): array
-    {
-        return array(
-            'name' => $this->getName()
-        );
-    }
 
     /********************************************** PROTECTED METHODS *********************************************/
 

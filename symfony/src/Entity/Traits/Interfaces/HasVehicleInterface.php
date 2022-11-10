@@ -46,7 +46,7 @@ interface HasVehicleInterface
      *
      * @return bool bool
      */
-    public function allowVehicle(string $vehicle): bool;
+    public static function allowVehicle(string $vehicle): bool;
 
     /*********************************************** STATIC METHODS ***********************************************/
 

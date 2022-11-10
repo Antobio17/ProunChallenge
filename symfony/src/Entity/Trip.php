@@ -50,7 +50,7 @@ class Trip extends AbstractORM implements TripInterface
 
     use VehicleTrait {
         VehicleTrait::__construct as protected __vehicleConstruct;
-        VehicleTrait::__toArray as protected __vehicleLocatorToArray;
+        VehicleTrait::__toArray as protected __vehicleToArray;
     }
 
     /************************************************* CONSTRUCT **************************************************/
@@ -130,6 +130,11 @@ class Trip extends AbstractORM implements TripInterface
             parent::__toArray(),
             $this->__UUIDToArray(),
             $this->__serviceLocatorToArray(),
+            $this->__vehicleToArray(),
+            array(
+                'collectionPoint' => $this->getCollectionPoint()->__toArray(),
+                'destinationPoint' => $this->getDestinationPoint()->__toArray(),
+            )
         );
     }
 

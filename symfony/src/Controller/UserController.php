@@ -64,7 +64,7 @@ class UserController extends AppController implements UserControllerInterface
                 $data = array('created' => TRUE);
             else:
                 $validationErrors[] = array(
-                    'message' => sprintf('El usuario %s ya existe actualmente.', $username)
+                    'message' => sprintf('The user %s already exist.', $username)
                 );
             endif;
         endif;
