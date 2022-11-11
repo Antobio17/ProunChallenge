@@ -29,6 +29,20 @@ Con el entorno en funcionamiento podemos proceder a realizar las pruebas sobre l
 
 http://localhost:30300/
 
+### Archivo dotenv
+
+Se necesitará en el entorno local el siguiente archivo .env para el correcto funcionamiento:
+
+```dotenv
+APP_ENV=dev
+APP_SECRET=81d7a4565046eb1fe263f2dc387b2867
+DATABASE_URL="mysql://root:secret@mysql-service:3306/db"
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+JWT_PASSPHRASE=0f3eabfcff25d34ca32ce37d4ca93195
+KERNEL_PROJECT_DIR=%kernel.project_dir%
+```
+
 ### Registro de usuario e inicio de sesión para JWT.
 
 | Ruta | Método | Parámetro 1  | Parámetro 2 |
@@ -55,16 +69,18 @@ http://localhost:30300/
 #### Ejemplo de recuperación de Trip:
 ![Ejemplo de recuperación de Trip](images/img_4.png)
 
-### Archivo dotenv
+### Administración con EasyAdmin
 
-Se necesitará en el entorno local el siguiente archivo .env para el correcto funcionamiento:
+Para el correcto funcionamiento de la administración deberemos ejecutar:
 
-```dotenv
-APP_ENV=dev
-APP_SECRET=81d7a4565046eb1fe263f2dc387b2867
-DATABASE_URL="mysql://root:secret@mysql-service:3306/db"
-JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
-JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
-JWT_PASSPHRASE=0f3eabfcff25d34ca32ce37d4ca93195
-KERNEL_PROJECT_DIR=%kernel.project_dir%
+```shell
+# Instalaremos las dependencias de package.json con:
+docker-compose run --rm node-service npm install
+# Compilaremos los assets con:
+docker-compose run --rm node-service yarn encore dev
 ```
+
+Una vez hecho esto podremos acceder a la administración de la aplicación desde http://localhost:30300/es/admin. Esta URL nos redirigirá al login en el caso de aún no habernos autentificado. Usaremos uno de los usuarios que hayamos creado desde la API.
+
+![EasyAdmin](images/img_7.png)
+![EasyAdmin](images/img_6.png)
