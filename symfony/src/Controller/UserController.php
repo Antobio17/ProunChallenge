@@ -92,6 +92,9 @@ class UserController extends AppController implements UserControllerInterface
         $data = NULL;
         if (empty($validationErrors)):
             $data = $this->getUserService()->signin($username, $password);
+            if ($data === NULL):
+                $validationErrors[] = array('message' => 'Authentication error.');
+            endif;
         endif;
 
         return $this->createJsonResponse($data, $validationErrors);
