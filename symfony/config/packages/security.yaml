@@ -23,6 +23,13 @@ security:
       stateless: true
       provider: app_user_provider
       jwt: ~
+    admin:
+      pattern: ^/
+      provider: app_user_provider
+      form_login:
+        login_path: login
+        check_path: login
+      logout: true
     main:
       lazy: true
       provider: app_user_provider
@@ -33,6 +40,7 @@ security:
     - { path: ^/api/signin, roles: PUBLIC_ACCESS }
     - { path: ^/api/signup, roles: PUBLIC_ACCESS }
     - { path: ^/api, roles: ROLE_USER }
+    - { path: ^/admin, roles: ROLE_USER }
 
 
 when@test:
