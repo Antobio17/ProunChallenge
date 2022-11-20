@@ -35,7 +35,7 @@ Se necesitará en el entorno local el siguiente archivo .env para el correcto fu
 
 ```dotenv
 APP_ENV=dev
-APP_SECRET=81d7a4565046eb1fe263f2dc387b2867
+APP_SECRET='$ecretf0rt3st'
 DATABASE_URL="mysql://root:secret@mysql-service:3306/db"
 JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
 JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
